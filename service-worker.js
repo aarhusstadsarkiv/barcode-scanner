@@ -3,7 +3,6 @@ const urlsToCache = [
   '/barcode-scanner/',
   '/barcode-scanner/index.html',
   '/barcode-scanner/html5-qrcode.min.js',
-  '/barcode-scanner/html5-qrcode-demo.js',
   '/barcode-scanner/data.json',
   '/barcode-scanner/favicon_io/android-chrome-192x192.png',
   '/barcode-scanner/favicon_io/android-chrome-512x512.png',
