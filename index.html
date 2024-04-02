@@ -4,10 +4,10 @@
     <title>Html-Qrcode Demo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/barcode-scanner/manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/barcode-scanner/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/barcode-scanner/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/barcode-scanner/favicon_io/favicon-16x16.png">
     <style>
         body {
             font-size: 20px;
@@ -44,8 +44,8 @@
     <div id="qr-reader"></div>
 </body>
 
-<script src="/html5-qrcode.min.js"></script>
-<script src="/html5-qrcode-demo.js"></script>
+<script src="/barcode-scanner/html5-qrcode.min.js"></script>
+<script src="/barcode-scanner/html5-qrcode-demo.js"></script>
 <script type="module">
     /**
     Data.json:
@@ -56,7 +56,7 @@
     */
     async function readData() {
         try {
-            const response = await fetch('data.json');
+            const response = await fetch('/barcode-scanner/data.json');
             const data = await response.json();
             return data
         } catch (error) {
@@ -110,7 +110,7 @@
 <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+        navigator.serviceWorker.register('/barcode-scanner/service-worker.js').then(registration => {
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
         }, err => {
           console.log('ServiceWorker registration failed: ', err);

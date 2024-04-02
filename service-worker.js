@@ -1,15 +1,15 @@
-const CACHE_NAME = 'qr-scanner-v1';
+const CACHE_NAME = 'qr-scanner-v1.0.0';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/html5-qrcode.min.js',
-  '/html5-qrcode-demo.js',
-  '/data.json',
-  '/favicon_io/android-chrome-192x192.png',
-  '/favicon_io/android-chrome-512x512.png',
-  '/favicon_io/apple-touch-icon.png',
-  '/favicon_io/favicon-32x32.png',
-  '/favicon_io/favicon-16x16.png',
+  '/barcode-scanner/',
+  '/barcode-scanner/index.html',
+  '/barcode-scanner/html5-qrcode.min.js',
+  '/barcode-scanner/html5-qrcode-demo.js',
+  '/barcode-scanner/data.json',
+  '/barcode-scanner/favicon_io/android-chrome-192x192.png',
+  '/barcode-scanner/favicon_io/android-chrome-512x512.png',
+  '/barcode-scanner/favicon_io/apple-touch-icon.png',
+  '/barcode-scanner/favicon_io/favicon-32x32.png',
+  '/barcode-scanner/favicon_io/favicon-16x16.png',
 ];
 
 self.addEventListener('install', event => {
