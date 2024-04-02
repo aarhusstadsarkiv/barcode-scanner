@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Html-Qrcode Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <style>
+        body {
+            font-size: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #qr-reader {
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            width: 75%;
+        }
+
+        #qr-reader video {
+            width: 50%;
+        }
+
+        #qr-reader-results {
+            margin: 0 auto;
+            margin-top: 20px;
+            min-width: 100%;
+            height: 50px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border: 1px solid #ccc;
+
+        }
+    </style>
+
+<body>
+    <div id="qr-reader-results"></div>
+    <div id="qr-reader"></div>
+</body>
+
+<script src="/html5-qrcode.min.js"></script>
+<script src="/html5-qrcode-demo.js"></script>
+<script type="module">
+    /**
+    Data.json:
+
+    {
+    "ABC-1234": "And here are some instructions for something secret!"
+    }
+    */
+    async function readData() {
+        try {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            return data
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    const data = await readData();
+    console.log(data);
+
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+
+    docReady(function () {
+        var resultContainer = document.getElementById('qr-reader-results');
+        var lastResult, countResults = 0;
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "qr-reader", { fps: 10, qrbox: 250 });
+
+        function onScanSuccess(decodedText, decodedResult) {
+            if (decodedText !== lastResult) {
+                ++countResults;
+                lastResult = decodedText;
+
+                let displayResult = decodedText;
+                if (data[decodedText]) {
+                    displayResult = data[decodedText];
+                }
+
+                resultContainer.innerHTML = `<div>${displayResult}</div>`;
+            }
+        }
+
+        // Optional callback for error, can be ignored.
+        function onScanError(qrCodeError) {
+            // This callback would be called in case of qr code scan error or setup error.
+            // You can avoid this callback completely, as it can be very verbose in nature.
+        }
+
+        html5QrcodeScanner.render(onScanSuccess, onScanError);
+    });
+</script>
+<script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, err => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+</script>
+</head>
+</html>
