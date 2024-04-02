@@ -12,9 +12,15 @@ When scanning it will look up results found in the data.json file.
 
 If a result is found it will display the result - otherwise it will display the value of the scanned barcode.
 
+# Install
+
+Go to https://aarhusstadsarkiv.github.io/barcode-scanner/ and in the browser main menu choose "Install app".
+
+Then you can place the app icon on your phone's home screen.
+
 # Updating
 
-Change the `data.json` file and push the changes to the server. Alter the `CACHE_NAME`  in the service worker to force the update.
+Change the `data.json` file and push the changes to the server. Alter the `CACHE_NAME` in the service worker to force the update.
 Alter this line:
 
     const CACHE_NAME = 'qr-scanner-v1';
