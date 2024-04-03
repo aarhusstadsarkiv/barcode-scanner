@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v1.2.7';
+const CACHE_NAME = 'v1.3.0';
 const urlsToCache = [
   '/barcode-scanner/',
   '/barcode-scanner/index.html',
