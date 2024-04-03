@@ -63,13 +63,7 @@
 
 <script src="/barcode-scanner/html5-qrcode.min.js"></script>
 <script type="module">
-    /**
-    Data.json:
 
-    {
-    "ABC-1234": "And here are some instructions for something secret!"
-    }
-    */
     async function readData() {
         try {
             const response = await fetch('/barcode-scanner/data.json');
@@ -81,7 +75,7 @@
     }
 
     const data = await readData();
-    console.log("Length of object keys", Object.keys(data).length); // Length of object keys 52989
+    console.log("Length of object keys", Object.keys(data).length); // Length of object keys 52989, 59527
 
     function docReady(fn) {
         // see if DOM is already available
