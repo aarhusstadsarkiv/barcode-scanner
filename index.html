@@ -76,7 +76,7 @@
     const version = 'v1.3.0';
 
     // Set the version in the DOM
-    document.getElementById('qr-version').innerHTML = `Version: ${version}`;
+    
 
     async function readData() {
         try {
@@ -89,7 +89,9 @@
     }
 
     const data = await readData();
-    console.log("Length of object keys", Object.keys(data).length); // Length of object keys 52989, 59527
+    // console.log("Length of object keys", Object.keys(data).length); // Length of object keys 52989, 59527
+
+    document.getElementById('qr-version').innerHTML = `Version: ${version}. Keys: ${Object.keys(data).length}`;
 
     function docReady(fn) {
         // see if DOM is already available
