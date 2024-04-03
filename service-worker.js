@@ -1,4 +1,4 @@
-const CACHE_NAME = 'qr-scanner-v1.0.5';
+const CACHE_NAME = 'qr-scanner-v1.1.0';
 const urlsToCache = [
   '/barcode-scanner/',
   '/barcode-scanner/index.html',
@@ -21,6 +21,7 @@ self.addEventListener('install', event => {
   );
 });
 
+/*
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -34,7 +35,7 @@ self.addEventListener('activate', event => {
     })
   );
 });
-
+*/
 
 self.addEventListener('fetch', event => {
   event.respondWith(
@@ -47,7 +48,7 @@ self.addEventListener('fetch', event => {
         return fetch(event.request).then(
           response => {
             // Check if we received a valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
+            if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
             var responseToCache = response.clone();
@@ -59,5 +60,5 @@ self.addEventListener('fetch', event => {
           }
         );
       })
-  );
+    );
 });
