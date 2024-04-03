@@ -1,9 +1,9 @@
-const CACHE_NAME = 'qr-scanner-v1.2.2';
+const CACHE_NAME = 'qr-scanner-v1.2.3';
 const urlsToCache = [
   '/barcode-scanner/',
   '/barcode-scanner/index.html',
   '/barcode-scanner/html5-qrcode.min.js',
-  '/barcode-scanner/data.json',
+  `/barcode-scanner/data.json?v=${CACHE_NAME}`,
   '/barcode-scanner/favicon_io/android-chrome-192x192.png',
   '/barcode-scanner/favicon_io/android-chrome-512x512.png',
   '/barcode-scanner/favicon_io/apple-touch-icon.png',
