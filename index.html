@@ -41,6 +41,22 @@
     </style>
 
 <body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/barcode-scanner/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        // Try to update the service worker every time the page loads
+                        registration.update();
+                        console.log('ServiceWorker updated');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
     <div id="qr-reader-results"></div>
     <div id="qr-reader"></div>
 </body>
@@ -107,22 +123,5 @@
         html5QrcodeScanner.render(onScanSuccess, onScanError);
     });
 </script>
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/barcode-scanner/service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    // Try to update the service worker every time the page loads
-                    registration.update();
-                    console.log('ServiceWorker updated');
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-        });
-    }
-</script>
 </head>
-
 </html>
