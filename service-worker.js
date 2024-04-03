@@ -1,4 +1,4 @@
-const CACHE_NAME = 'qr-scanner-v1.1.2';
+const CACHE_NAME = 'qr-scanner-v1.1.4';
 const urlsToCache = [
   '/barcode-scanner/',
   '/barcode-scanner/index.html',
@@ -10,6 +10,8 @@ const urlsToCache = [
   '/barcode-scanner/favicon_io/favicon-32x32.png',
   '/barcode-scanner/favicon_io/favicon-16x16.png',
 ];
+
+console.log('cache name', CACHE_NAME);
 
 self.addEventListener('install', event => {
   event.waitUntil(
