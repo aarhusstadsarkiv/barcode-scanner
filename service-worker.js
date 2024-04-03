@@ -1,14 +1,14 @@
-const CACHE_NAME = 'v1.3.2';
+const CACHE_NAME = 'v1.4.0';
 const urlsToCache = [
-  '/barcode-scanner/',
-  '/barcode-scanner/index.html',
-  '/barcode-scanner/html5-qrcode.min.js',
-  `/barcode-scanner/data.json?v=${CACHE_NAME}`,
-  '/barcode-scanner/favicon_io/android-chrome-192x192.png',
-  '/barcode-scanner/favicon_io/android-chrome-512x512.png',
-  '/barcode-scanner/favicon_io/apple-touch-icon.png',
-  '/barcode-scanner/favicon_io/favicon-32x32.png',
-  '/barcode-scanner/favicon_io/favicon-16x16.png',
+  '/',
+  '/index.html',
+  '/html5-qrcode.min.js',
+  `/data.json`,
+  '/favicon_io/android-chrome-192x192.png',
+  '/favicon_io/android-chrome-512x512.png',
+  '/favicon_io/apple-touch-icon.png',
+  '/favicon_io/favicon-32x32.png',
+  '/favicon_io/favicon-16x16.png',
 ];
 
 console.log('cache name', CACHE_NAME);

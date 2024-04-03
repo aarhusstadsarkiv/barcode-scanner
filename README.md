@@ -28,3 +28,7 @@ Alter this line:
 # Assets
 
 Assets and icons are generated using https://favicon.io/
+
+# Sever
+
+surge . acceptable-turkey.surge.sh
