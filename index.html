@@ -73,10 +73,7 @@
 
 <script src="/barcode-scanner/html5-qrcode.min.js"></script>
 <script type="module">
-    const version = 'v1.3.0';
-
-    // Set the version in the DOM
-    
+    const version = 'v1.3.1';
 
     async function readData() {
         try {
@@ -89,8 +86,8 @@
     }
 
     const data = await readData();
-    // console.log("Length of object keys", Object.keys(data).length); // Length of object keys 52989, 59527
 
+    // Display the version and number of keys
     document.getElementById('qr-version').innerHTML = `Version: ${version}. Keys: ${Object.keys(data).length}`;
 
     function docReady(fn) {
