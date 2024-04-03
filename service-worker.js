@@ -1,9 +1,9 @@
-const CACHE_NAME = 'qr-scanner-v1.2.7';
+const CACHE_NAME = 'qr-scanner-v1.2.8';
 const urlsToCache = [
   '/barcode-scanner/',
   '/barcode-scanner/index.html',
   '/barcode-scanner/html5-qrcode.min.js',
-  `/barcode-scanner/data.json?v=${CACHE_NAME}`,
+  `/barcode-scanner/data.json`,
   '/barcode-scanner/favicon_io/android-chrome-192x192.png',
   '/barcode-scanner/favicon_io/android-chrome-512x512.png',
   '/barcode-scanner/favicon_io/apple-touch-icon.png',
@@ -37,28 +37,24 @@ self.addEventListener('activate', event => {
   );
 });
 
+// Try to get the resource from the network
+// before falling back to the cache
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
+    fetch(event.request).then(networkResponse => {
+      caches.open(CACHE_NAME).then(cache => {
+        cache.put(event.request, networkResponse.clone());
+      });
+      // And return the network response
+      return networkResponse;
+    }).catch(() => {
+      // If the network request fails, try to serve the resource from the cache
+      return caches.match(event.request).then(response => {
         if (response) {
           return response;
         }
-        return fetch(event.request).then(
-          response => {
-            // Check if we received a valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-            var responseToCache = response.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-            return response;
-          }
-        );
-      })
-    );
+        // Optionally, provide a fallback
+      });
+    })
+  );
 });
