@@ -2,9 +2,9 @@
 
 This is a simple PWA barcode scanner. It does not need internet to work. For installing and updating you will need internet connection.
 
-The app will load the data from `data.json`. When scanning it will look up results found in the data.json file. 
+The app will load the data from `data.json`. When scanning it will look up results found in the data.json file. In order to update `data.json` from different sources you may run `node concatenate.js` which will generate a new `data.json` file from all sources found in `data/`.
 
-If a result is found it will display the result - otherwise it will display the value of the scanned barcode.
+If a result is found it the app will display the result - otherwise it will display the value of the scanned barcode.
 
 # Install
 
