@@ -1,7 +1,7 @@
 # barcode-scanner
 
 This is a simple PWA barcode scanner. It does not need internet to work. 
-For installing and updating it you need to have internet.
+For installing and updating you will need internet connection.
 
 The app will load the data from `data.json`.
 
