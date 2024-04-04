@@ -1,28 +1,20 @@
 # barcode-scanner
 
-This is a simple PWA barcode scanner. It does not need internet to work. 
-For installing and updating you will need internet connection.
+This is a simple PWA barcode scanner. It does not need internet to work. For installing and updating you will need internet connection.
 
-The app will load the data from `data.json`.
+The app will load the data from `data.json`. When scanning it will look up results found in the data.json file. 
 
-When scanning it will look up results found in the data.json file. 
-
-If a result is found it will display the result - 
-otherwise it will display the value of the scanned barcode.
+If a result is found it will display the result - otherwise it will display the value of the scanned barcode.
 
 # Install
 
-Go to https://acceptable-turkey.surge.sh using your browser (e.g. chrome)
+Go to https://acceptable-turkey.surge.sh using your browser (e.g. chrome).
 
-You may be prompted for installing the app. Then accept. If not prompted
-then install it using the browser menu (`Install app`).
-Then you can place the app icon on your phone's home screen. 
+You may be prompted for installing the app. Then accept. If not prompted then install it using the browser menu (`Install app`). Then you can place the app icon on your phone's home screen. 
 
 # Updating
 
-Change the `data.json` file. Alter the `VERSION` in the 
-service worker to set a new version of the `service-worker`. 
-Also set the new `VERSION` in `index.html`
+Change the `data.json` file. Alter the `VERSION` in the service worker to set a new version of the `service-worker`. Also set the new `VERSION` in `index.html`
 
 Push to a remote server:
 
