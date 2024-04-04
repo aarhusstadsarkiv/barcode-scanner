@@ -38,7 +38,7 @@
             border: 1px solid #ccc;
 
         }
-        /** center qr-version */
+
         #qr-version {
             margin: 0 auto;
             margin-top: 20px;
@@ -49,19 +49,23 @@
 <body>
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js?v=v1.4.0')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                        // Try to update the service worker every time the page loads
-                        registration.update();
-                        console.log('ServiceWorker updated');
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
+            navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                // Listen for updates to the service worker.
+                registration.addEventListener('updatefound', () => {
+                    // The updatefound event implies a new service worker is being installed.
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        // Has network been installed?
+                        if (newWorker.state === 'installed') {
+                            console.log('New service worker installed.');
+                        }
                     });
+                });
+            }).catch(error => {
+                console.log('Service Worker registration failed:', error);
             });
         }
+
     </script>
     <div id="qr-reader-results"></div>
     <div id="qr-reader"></div>
@@ -70,7 +74,7 @@
 
 <script src="/html5-qrcode.min.js"></script>
 <script type="module">
-    const version = 'v1.4.0';
+    const VERSION = 'v2.0.1';
 
     async function readData() {
         try {
@@ -85,7 +89,7 @@
     const data = await readData();
 
     // Display the version and number of keys
-    document.getElementById('qr-version').innerHTML = `Version: ${version}. Keys: ${Object.keys(data).length}`;
+    document.getElementById('qr-version').innerHTML = `Version: ${VERSION}. Keys: ${Object.keys(data).length}`;
 
     function docReady(fn) {
         // see if DOM is already available
@@ -128,4 +132,5 @@
     });
 </script>
 </head>
+
 </html>
