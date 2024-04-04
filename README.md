@@ -23,7 +23,7 @@ Then you can place the app icon on your phone's home screen.
 Change the `data.json` file. Alter the `VERSION` in the 
 service worker to force the update. Set the `VERSION` in `index.html`
 
-Then push to remove server: 
+Then push to remote server: 
 
     surge . acceptable-turkey.surge.sh
 
@@ -34,5 +34,5 @@ clicking on the app icon on the desktop and press `Site settings` and then press
 
 # Assets
 
-Assets and icons are generated using https://favicon.io/
-It uses this library for the scanning: https://github.com/mebjas/html5-qrcode
+* Assets and icons are generated using https://favicon.io/
+* It uses this library for the scanning: https://github.com/mebjas/html5-qrcode
